@@ -12,11 +12,11 @@ if BASE_DIR not in sys.path:
 # ---------------------------------------------------------
 # Import project modules (from /src and /config)
 # ---------------------------------------------------------
-from scripts.fetch_data import fetch_race_data
-from scripts.process_data import process_race_data
-from scripts.generate_charts import generate_basic_charts
-from scripts.generate_report import generate_summary
-from scripts.upload_to_s3 import upload_folder_to_s3
+from fetch_data import fetch_race_data
+from process_data import process_race_data
+from generate_charts import generate_basic_charts
+from generate_report import generate_summary
+from upload_to_s3 import upload_folder_to_s3
 
 from config.settings import RAW_DATA_DIR, PROCESSED_DATA_DIR, CHARTS_DIR, AWS_BUCKET
 

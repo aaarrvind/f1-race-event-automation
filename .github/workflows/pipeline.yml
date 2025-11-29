@@ -1,0 +1,31 @@
+name: F1 Automation Pipeline
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 20 * * SUN"   # Runs every Sunday night
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+
+    - name: Install Dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run Pipeline
+      run: python scripts/main.py --year 2024 --round 1
+
+    - name: Upload Artefacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: f1-report
+        path: data/

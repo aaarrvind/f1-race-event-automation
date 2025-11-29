@@ -1,0 +1,7 @@
+fastf1==3.1.7
+pandas
+matplotlib
+plotly
+requests
+boto3
+python-dotenv

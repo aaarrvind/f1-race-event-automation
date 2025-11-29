@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>F1 Race Insights Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>F1 Race Insights</h1>
+
+    <h2>Race Summary</h2>
+    <pre id="summary"></pre>
+
+    <h2>Lap Time Evolution</h2>
+    <img src="../data/charts/2024_round_1_lap_times.png" width="700">
+
+    <script>
+        fetch('../data/reports_2024_1.json')
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("summary").innerText = JSON.stringify(data, null, 2);
+        });
+    </script>
+
+</body>
+</html>

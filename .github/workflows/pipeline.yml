@@ -2,6 +2,15 @@ name: F1 Race Automation Pipeline
 
 on:
   workflow_dispatch:
+   inputs:
+      year:
+        description: 'F1 season year'
+        required: true
+        default: '2024'
+      round:
+        description: 'Round number'
+        required: true
+        default: '1'
 
 jobs:
   run-etl:
@@ -26,7 +35,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          python scripts/main.py
+          python scripts/main.py --year ${{ github.event.inputs.year }} --round ${{ github.event.inputs.round }}
 
       - name: Upload processed data artifacts
         uses: actions/upload-artifact@v4

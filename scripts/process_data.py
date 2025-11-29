@@ -1,5 +1,12 @@
-import pandas as pd
+import sys
 import os
+
+# Add project root to Python path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
+import pandas as pd
 from config.settings import RAW_DATA_DIR, PROCESSED_DATA_DIR
 
 def process_race_data(raw_folder, year, round_number):
